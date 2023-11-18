@@ -23,8 +23,8 @@ public class RectangleTranslation extends JFrame {
                 super.paintComponent(g);
                 Graphics2D g2d = (Graphics2D) g;
 
-                int x = 50;
-                int y = 50;
+                int x = 150;
+                int y = 150;
                 int width = 100;
                 int height = 60;
 
