@@ -12,14 +12,14 @@ public class Transformations extends JFrame {
     private JTextField translateXInput;
     private JTextField translateYInput;
 
-    // scaling
+    // skalierung
     private JTextField scaleXInput;
     private JTextField scaleYInput;
 
     // rotation
     private JTextField rotateAngleInput;
 
-    // skewing
+    // scherung
     private JTextField skewXInput;
     private JTextField skewYInput;
 
@@ -54,16 +54,24 @@ public class Transformations extends JFrame {
                 double translateY = Double.parseDouble(translateYInput.getText());
                 transform.translate(translateX, translateY);
 
-                // scaling
+                // skalierung
                 double scaleX = Double.parseDouble(scaleXInput.getText());
                 double scaleY = Double.parseDouble(scaleYInput.getText());
+
+                // Translate to the origin
+                transform.translate(centerX, centerY);
+
+                // Scale at the origin
                 transform.scale(scaleX, scaleY);
+
+                // Translate back to the original position
+                transform.translate(-centerX, -centerY);
 
                 // rotation
                 double rotateAngle = Math.toRadians(Double.parseDouble(rotateAngleInput.getText()));
                 transform.rotate(rotateAngle, centerX, centerY);
 
-                // skewing
+                // scherung
                 double skewX = Double.parseDouble(skewXInput.getText());
                 double skewY = Double.parseDouble(skewYInput.getText());
                 transform.shear(skewX, skewY);
@@ -73,6 +81,7 @@ public class Transformations extends JFrame {
                 g2d.setColor(Color.RED);
                 g2d.fill(transformedRectangle);
             }
+
         };
 
         // textfelder und buttons für translation
